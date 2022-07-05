@@ -41,7 +41,7 @@ const router = useRouter()
 
 const loginForm = reactive({
   username: 'test',
-  password: '',
+  password: 1234567,
   code: ''
 })
 
@@ -81,6 +81,7 @@ function handelLogin() {
           store.commit('user/setMenuList', response.data.data.nav)
           router.push('/')
         })
+        store.dispatch('user/getUser')
       } else {
         console.log(res)
         getCode()

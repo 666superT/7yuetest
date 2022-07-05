@@ -1,8 +1,10 @@
+import { getUserInfo } from '@/api/login'
 export default {
   namespaced: true,
   state: () => ({
     authorization: '',
-    menuList: []
+    menuList: [],
+    userInfo: ''
   }),
   mutations: {
     setHeaders(state, authorization) {
@@ -10,7 +12,20 @@ export default {
     },
     setMenuList(state, menu) {
       state.menuList = menu
+    },
+    setUserInfo(state, obj) {
+      state.userInfo = obj
     }
   },
-  actions: {}
+  actions: {
+    async getUser({ commit }) {
+      const res = await getUserInfo()
+      // console.log(res)
+      commit('setUserInfo', res.data.data)
+    },
+    handleEdit({ commit }) {
+      commit('setHeaders', '')
+      commit('setUserInfo', '')
+    }
+  }
 }

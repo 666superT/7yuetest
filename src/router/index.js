@@ -15,12 +15,14 @@ const routes = [
       {
         path: '/profile',
         name: 'profile',
-        component: () => import('../views/profile')
+        component: () => import('../views/profile'),
+        meta: { title: '首页', icon: '<el-icon><HomeFilled /></el-icon>' }
       }
     ]
   }
 ]
 
+export const privateRouters = []
 const router = createRouter({
   history: createWebHashHistory(),
   routes

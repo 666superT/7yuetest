@@ -1,5 +1,6 @@
 const getters = {
-  authorization: (state) => state.user.authorization || '',
-  menuList: (state) => state.user.menuList || []
+  authorization: (state) => state.user.authorization,
+  menuList: (state) => state.user.menuList,
+  userInfo: (state) => state.user.userInfo
 }
 export default getters
