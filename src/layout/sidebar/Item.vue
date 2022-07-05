@@ -2,16 +2,17 @@
   <template v-if="item && !props.item.children">
     <el-menu-item :index="item.path">
       <template #title>
-        <i :class="item.icon"></i>
-        <span>{{ item.title }}</span>
+        <el-icon>
+          <component :is="location" />
+        </el-icon>
+        <span>{{ item.meta.title }}</span>
       </template>
     </el-menu-item>
   </template>
   <template v-if="props.item && props.item.children">
     <el-sub-menu :index="item.path">
       <template #title>
-        <i :class="item.icon"></i>
-        <span>{{ item.title }}</span>
+        <span>{{ item.meta.title }}</span>
       </template>
       <Item
         v-for="(childrenItem, index) in item.children"

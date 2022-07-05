@@ -4,7 +4,8 @@ export default {
   state: () => ({
     authorization: '',
     menuList: [],
-    userInfo: ''
+    userInfo: '',
+    tagsList: []
   }),
   mutations: {
     setHeaders(state, authorization) {
@@ -15,6 +16,23 @@ export default {
     },
     setUserInfo(state, obj) {
       state.userInfo = obj
+    },
+    setTagsList(state, val) {
+      // console.log(val)
+      let flag = false
+      state.tagsList.forEach((v) => {
+        if (v.path === val.path) {
+          flag = true
+        }
+      })
+      if (!flag) {
+        state.tagsList.push(val)
+      }
+    },
+    delTag(state, i) {
+      if (state.tagsList.length !== 1) {
+        state.tagsList.splice(i, 1)
+      }
     }
   },
   actions: {

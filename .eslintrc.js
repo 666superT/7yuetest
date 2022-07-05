@@ -17,6 +17,7 @@ module.exports = {
         ignores: ['index'] // 需要忽略的组件名
       }
     ],
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+    'prefer-const': 'off'
   }
 }

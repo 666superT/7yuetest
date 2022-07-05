@@ -14,14 +14,23 @@
 
 <script setup>
 import Item from './Item'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
+import { filterRouters, generateMenus } from '../../utils/router'
+import { filterMenuData } from '../../utils/menu'
 
 const store = useStore()
+const router = useRouter()
 
 const menuList = computed(() => {
-  return store.getters.menuList
+  const routes = filterRouters(router.getRoutes())
+  return filterMenuData(generateMenus(routes))
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.el-menu {
+  overflow-x: hidden;
+}
+</style>

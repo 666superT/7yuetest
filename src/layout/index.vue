@@ -16,4 +16,8 @@ import Navbar from './Navbar'
 import AppMain from './AppMain'
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.el-row{
+  height: 100%;
+}
+</style>

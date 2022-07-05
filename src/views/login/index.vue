@@ -83,7 +83,8 @@ function handelLogin() {
         })
         store.dispatch('user/getUser')
       } else {
-        console.log(res)
+        // console.log(res)
+        loginForm.code = ''
         getCode()
       }
     }
