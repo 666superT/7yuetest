@@ -10,4 +10,11 @@ function login(params) {
   })
 }
 
-export { getLoginCode, login }
+function getMenuList() {
+  return request({ url: '/sys/menu/nav', method: 'get' })
+}
+
+function getUserInfo() {
+  return request({ url: '/sys/userInfo', method: 'get' })
+}
+export { getLoginCode, login, getMenuList, getUserInfo }

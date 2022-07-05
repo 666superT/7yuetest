@@ -1,6 +1,16 @@
 export default {
   namespaced: true,
-  state: () => ({}),
-  mutations: {},
+  state: () => ({
+    authorization: '',
+    menuList: []
+  }),
+  mutations: {
+    setHeaders(state, authorization) {
+      state.authorization = authorization
+    },
+    setMenuList(state, menu) {
+      state.menuList = menu
+    }
+  },
   actions: {}
 }
