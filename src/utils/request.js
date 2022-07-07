@@ -21,6 +21,7 @@ http.interceptors.request.use(
     if (authorization) {
       config.headers.Authorization = authorization
     }
+
     return config
   },
   (err) => {
@@ -32,10 +33,9 @@ http.interceptors.request.use(
 http.interceptors.response.use(
   (res) => {
     loding.close()
-    if (res.data.code === 200) {
-      _showMessage(res.data.msg, 'success')
-    } else if (res.data.code === 400) {
-      _showMessage(res.data.msg, 'error')
+    // console.log(res)
+    if (res.data.code === 400) {
+      ElMessage.error(res.data.msg)
     }
     return res
   },

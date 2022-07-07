@@ -18,6 +18,7 @@ module.exports = {
       }
     ],
     'no-unused-vars': 'off',
-    'prefer-const': 'off'
+    'prefer-const': 'off',
+    'spaced-comment': 'off'
   }
 }

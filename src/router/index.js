@@ -1,6 +1,10 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import menu from './modules/menu'
+import user from './modules/user'
+import role from './modules/role'
+import tool from './modules/tool'
 import layout from '../layout'
-const routes = [
+export const publicRoutes = [
   {
     path: '/login',
     name: 'login',
@@ -16,58 +20,26 @@ const routes = [
         path: '/profile',
         name: 'profile',
         component: () => import('../views/profile'),
-        meta: { title: '首页', icon: '<el-icon><HomeFilled /></el-icon>' }
-      }
-    ]
-  },
-  {
-    name: 'sys',
-    path: '/sys',
-    component: layout,
-    meta: { title: '系统管理', icon: '<el-icon><Operation /></el-icon>' },
-    redirect: '/sys/user',
-    children: [
-      {
-        path: '/sys/user',
-        name: 'user',
-        component: () => import('.././views/user'),
-        meta: { title: '用户管理', icon: '<el-icon><Tickets /></el-icon>' }
+        meta: { title: '首页', icon: '1' }
       },
       {
-        path: '/sys/role',
-        name: 'role',
-        component: () => import('.././views/role'),
-        meta: { title: '角色管理', icon: '<el-icon><Tickets /></el-icon>' }
+        path: '/404',
+        name: '404',
+        component: () => import('../views/404')
       },
       {
-        path: '/sys/menu',
-        name: 'menu',
-        component: () => import('.././views/menu'),
-        meta: { title: '菜单管理', icon: '<el-icon><Tickets /></el-icon>' }
-      }
-    ]
-  },
-  {
-    name: 'tool',
-    path: '/tool',
-    component: layout,
-    meta: { title: '系统工具', icon: '<el-icon><Tools /></el-icon>' },
-    redirect: '/tool/dict',
-    children: [
-      {
-        path: '/tool/dict',
-        name: 'dict',
-        component: () => import('.././views/dict'),
-        meta: { title: '数字字典', icon: '<el-icon><Tickets /></el-icon>' }
+        path: '/401',
+        name: '401',
+        component: () => import('../views/401')
       }
     ]
   }
 ]
 
-export const privateRouters = []
+export const privateRoutes = [menu, user, role, tool]
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes: publicRoutes
 })
 
 export default router

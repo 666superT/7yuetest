@@ -1,4 +1,4 @@
-import { getUserInfo } from '@/api/login'
+import { getUserInfo, getMenuList } from '@/api/login'
 export default {
   namespaced: true,
   state: () => ({
@@ -40,10 +40,20 @@ export default {
       const res = await getUserInfo()
       // console.log(res)
       commit('setUserInfo', res.data.data)
+      return res
     },
     handleEdit({ commit }) {
       commit('setHeaders', '')
       commit('setUserInfo', '')
+      commit('setMenuList', '')
+    },
+    /**
+     * 请求导航栏
+     */
+    async getNav({ commit }) {
+      const res = await getMenuList()
+      commit('setMenuList', res.data.data)
+      return res.data
     }
   }
 }

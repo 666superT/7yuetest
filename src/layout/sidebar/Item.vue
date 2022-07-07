@@ -2,9 +2,7 @@
   <template v-if="item && !props.item.children">
     <el-menu-item :index="item.path">
       <template #title>
-        <el-icon>
-          <component :is="location" />
-        </el-icon>
+        <svg-icon icon='eye'></svg-icon>
         <span>{{ item.meta.title }}</span>
       </template>
     </el-menu-item>
@@ -15,8 +13,8 @@
         <span>{{ item.meta.title }}</span>
       </template>
       <Item
-        v-for="(childrenItem, index) in item.children"
-        :key="index"
+        v-for="childrenItem in item.children"
+        :key="childrenItem"
         :item="childrenItem"
       ></Item>
     </el-sub-menu>
@@ -25,7 +23,6 @@
 
 <script setup>
 import { defineProps } from 'vue'
-
 const props = defineProps({
   item: {
     type: Object,

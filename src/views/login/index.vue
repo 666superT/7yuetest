@@ -32,7 +32,7 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
-import { getLoginCode, login, getMenuList } from '../../api/login'
+import { getLoginCode, login } from '../../api/login'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 
@@ -76,12 +76,20 @@ function handelLogin() {
         token: data.token
       })
       if (res.data.code === 200) {
+        /**
+         * 用户信息请求成功
+         */
         store.commit('user/setHeaders', res.headers.authorization)
-        getMenuList().then((response) => {
-          store.commit('user/setMenuList', response.data.data.nav)
-          router.push('/')
-        })
-        store.dispatch('user/getUser')
+        /**
+         * 请求导航栏
+         */
+        // await store.dispatch('user/getNav')
+        /**
+         * 请求用户信息
+         */
+        // await store.dispatch('user/getUser')
+
+        router.push('/')
       } else {
         // console.log(res)
         loginForm.code = ''
